@@ -104,7 +104,8 @@ myKeys = flip EZ.mkKeymap [
     , ("S-M-p", spawn "/opt/bin/launchbox.py")
     , ("S-M-n", spawn "nautilus --no-desktop --browser")
     , ("S-M-s", spawn "unity-control-center")
-    , ("S-M-q", spawn "sudo service lightdm restart")
+    , ("S-M-g", spawn "google-chrome")
+    , ("S-M-q", spawn "kill -9 -1")
 
     , ("M-q",   spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in \\$PATH: \"$PATH\"; fi")
     -- Lock Screen
@@ -150,6 +151,7 @@ startup = do
 --        ]
     --spawn "xsetroot -solid #888888"
     --spawn "xloadimage -onroot -fullscreen <path.to.image>"
+      spawn "/bin/sh ~/.xmonad/startup-hook"
     return ()
 
 gnomeRegister2 :: MonadIO m => m ()
